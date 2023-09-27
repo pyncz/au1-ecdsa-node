@@ -6,10 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "gen": "esno scripts/generateKeyPair.js"
   },
   "dependencies": {
+    "@au1/shared": "workspace:*",
     "axios": "^0.27.2",
+    "ethereum-cryptography": "^2.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

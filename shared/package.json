@@ -1,0 +1,16 @@
+{
+  "name": "@au1/shared",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "exports": {
+    "./utils/getAddress.js": "./utils/getAddress.js",
+    "./utils/hashMessage.js": "./utils/hashMessage.js"
+  },
+  "dependencies": {
+    "ethereum-cryptography": "^2.1.2"
+  }
+}
