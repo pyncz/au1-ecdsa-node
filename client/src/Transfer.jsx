@@ -1,7 +1,8 @@
 import { useState } from "react";
 import server from "./server";
+import { signMessage } from "./utils";
 
-function Transfer({ address, setBalance }) {
+function Transfer({ sender, privateKey, setBalance }) {
   const [sendAmount, setSendAmount] = useState("");
   const [recipient, setRecipient] = useState("");
 
@@ -11,12 +12,19 @@ function Transfer({ address, setBalance }) {
     evt.preventDefault();
 
     try {
+      const data = {
+        amount: parseInt(sendAmount),
+        recipient,
+      }
+      const { signature, recovery } = signMessage(JSON.stringify(data), privateKey)
+
       const {
         data: { balance },
       } = await server.post(`send`, {
-        sender: address,
-        amount: parseInt(sendAmount),
-        recipient,
+        sender,
+        data,
+        signature,
+        recovery,
       });
       setBalance(balance);
     } catch (ex) {
@@ -33,6 +41,7 @@ function Transfer({ address, setBalance }) {
         <input
           placeholder="1, 2, 3..."
           value={sendAmount}
+          required
           onChange={setValue(setSendAmount)}
         ></input>
       </label>
@@ -43,10 +52,13 @@ function Transfer({ address, setBalance }) {
           placeholder="Type an address, for example: 0x2"
           value={recipient}
           onChange={setValue(setRecipient)}
+          required
         ></input>
       </label>
 
-      <input type="submit" className="button" value="Transfer" />
+      <button type="submit">
+        Transfer
+      </button>
     </form>
   );
 }

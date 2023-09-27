@@ -35,7 +35,7 @@ label {
     margin: 10px 0;
   }
 
-  .button {
+  button {
     margin-top: 10px;
   }
 }
@@ -49,7 +49,7 @@ input {
   font-size: 0.875rem;
 }
 
-.button {
+button {
   background-color: #319795;
   border-radius: 0.125rem;
   padding: 10px 20px;
@@ -59,9 +59,21 @@ input {
   letter-spacing: 1px;
   font-weight: 400;
   font-size: .9em;
+  border: none;
   &:hover {
     cursor: pointer;
   }
+}
+
+pre {
+  display: inline-block;
+  font-size: 1.375em;
+  line-height: 1;
+  opacity: 0.8;
+  border-radius: 0.25em;
+  padding: 0.125em 0.25em;
+  background: rgb(226, 232, 240);
+  margin: 0.325em 0;
 }
 
 .wallet {
